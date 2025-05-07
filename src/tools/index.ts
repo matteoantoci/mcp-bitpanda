@@ -7,6 +7,8 @@ import { listFiatTransactionsTool } from './fiatTransactions.js'; // Import the 
 import { listCryptoWalletsTool } from './cryptoWallets.js'; // Import the listCryptoWalletsTool
 import { listCryptoTransactionsTool } from './cryptoTransactions.js'; // Import the listCryptoTransactionsTool
 import { listCommodityTransactionsTool } from './commodity.js'; // Import the listCommodityTransactionsTool
+import { assetInfoTool } from './assetInfo.js'; // Import the assetInfoTool
+import { ohlcTool } from './ohlc.js'; // Import the ohlcTool
 
 // Placeholder type for tool definition, similar to mcp-indicators
 type BitpandaToolDefinition = {
@@ -27,6 +29,8 @@ const bitpandaToolDefinitions: BitpandaToolDefinition[] = [
   listCryptoWalletsTool, // Add the listCryptoWalletsTool to the array
   listCryptoTransactionsTool, // Add the listCryptoTransactionsTool to the array
   listCommodityTransactionsTool, // Add the listCommodityTransactionsTool to the array
+  assetInfoTool, // Add the assetInfoTool to the array
+  ohlcTool, // Add the ohlcTool to the array
   // Other tools will be added here as they are implemented
 ];
 
