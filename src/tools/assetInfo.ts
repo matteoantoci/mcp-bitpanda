@@ -1,6 +1,5 @@
 import { z } from 'zod';
-import axios from 'axios';
-import { BITPANDA_API_BASE_URL } from '../config.js'; // Use .js extension for local import
+import { findAssetBySymbol } from './utils/assetUtils.js'; // Import the shared utility
 
 // Define the input schema shape for the get_asset_info tool
 const assetInfoInputSchemaShape = {
@@ -20,25 +19,7 @@ type Output = {
 // Define the handler function for the get_asset_info tool
 const assetInfoHandler = async (input: Input): Promise<Output> => {
   try {
-    const response = await axios.get(`${BITPANDA_API_BASE_URL}/currencies`);
-    const data = response.data.data.attributes;
-
-    // Search through all asset type arrays for the symbol
-    const assetTypes = ['commodities', 'cryptocoins', 'etfs', 'etcs', 'fiat_earns'];
-    let foundAsset = null;
-
-    for (const type of assetTypes) {
-      if (data[type] && Array.isArray(data[type])) {
-        foundAsset = data[type].find((asset: any) => asset.attributes?.symbol === input.symbol);
-        if (foundAsset) {
-          break; // Found the asset, stop searching
-        }
-      }
-    }
-
-    if (!foundAsset) {
-      throw new Error(`Asset with symbol "${input.symbol}" not found.`);
-    }
+    const foundAsset = await findAssetBySymbol(input.symbol);
 
     // Return the found asset object
     return foundAsset;

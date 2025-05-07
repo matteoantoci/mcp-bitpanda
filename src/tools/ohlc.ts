@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import axios from 'axios';
 import { BITPANDA_API_BASE_URL } from '../config.js'; // Use .js extension for local import
+import { findAssetBySymbol } from './utils/assetUtils.js'; // Import the shared utility
 
 // Define the input schema shape for the get_ohlc tool
 const ohlcInputSchemaShape = {
@@ -33,26 +34,9 @@ const ohlcOutputSchema = z.object({
 // Define the handler function for the get_ohlc tool
 const ohlcHandler = async (input: Input): Promise<Output> => {
   try {
-    // First, get the asset ID from the currencies endpoint
-    const currenciesResponse = await axios.get(`${BITPANDA_API_BASE_URL}/currencies`);
-    const currenciesData = currenciesResponse.data.data.attributes;
-
-    const assetTypes = ['commodities', 'cryptocoins', 'etfs', 'etcs', 'fiat_earns'];
-    let assetId = null;
-
-    for (const type of assetTypes) {
-      if (currenciesData[type] && Array.isArray(currenciesData[type])) {
-        const foundAsset = currenciesData[type].find((asset: any) => asset.attributes?.symbol === input.symbol);
-        if (foundAsset) {
-          assetId = foundAsset.id;
-          break;
-        }
-      }
-    }
-
-    if (!assetId) {
-      throw new Error(`Asset with symbol "${input.symbol}" not found.`);
-    }
+    // First, get the asset ID using the shared utility function
+    const foundAsset = await findAssetBySymbol(input.symbol);
+    const assetId = foundAsset.id;
 
     // Then, fetch the OHLC data using the asset ID
     const ohlcResponse = await axios.get(
