@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server that exposes tools for interacting with the Bitpanda API. This server allows programmatic access to Bitpanda features like trades, wallets, and transactions via the MCP protocol.
 
+<a href="https://glama.ai/mcp/servers/@matteoantoci/mcp-bitpanda">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@matteoantoci/mcp-bitpanda/badge" alt="Bitpanda Server MCP server" />
+</a>
+
 ## Prerequisites
 
 - Node.js (v18 or later recommended)
