@@ -55,7 +55,16 @@ A Model Context Protocol (MCP) server that exposes tools for interacting with th
 
 ## Available Tools
 
-(This section will be updated as tools are implemented)
+-   `get_asset_info`: Retrieves detailed information for a specific asset by its symbol (e.g., BTC, XAU).
+    -   Parameters: `symbol` (string, required)
+    -   Note: This tool does not require an API key.
+
+-   `get_ohlc`: Retrieves OHLC (Open/High/Low/Close) data for a specific asset, fiat currency, and timeframe.
+    -   Parameters:
+        -   `symbol` (string, required): The trading symbol.
+        -   `fiatCurrency` (string, required): The fiat currency (e.g., USD, EUR).
+        -   `timeframe` (string, required): Either "day" or "week".
+    -   Note: This tool does not require an API key.
 
 ## Extending
 
