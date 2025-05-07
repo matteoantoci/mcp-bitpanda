@@ -66,6 +66,41 @@ A Model Context Protocol (MCP) server that exposes tools for interacting with th
         -   `timeframe` (string, required): Either "day" or "week".
     -   Note: This tool does not require an API key.
 
+
+-   `list_trades`: Lists all user's trades from the Bitpanda API. Newest trades come first. Response is cursor paginated.
+    -   Parameters:
+        -   `type` (string, optional): One of `buy` or `sell`.
+        -   `cursor` (string, optional): Id of the last known trade by the client. Only trades after this id are returned. Empty or missing cursor parameter will return trades from the start.
+        -   `page_size` (integer, optional): Size of a page for the paginated response.
+
+-   `list_asset_wallets`: Lists all user's asset wallets grouped by asset type from the Bitpanda API.
+    -   Parameters: None.
+
+-   `list_fiat_wallets`: Lists all user's fiat wallets from the Bitpanda API.
+    -   Parameters: None.
+
+-   `list_fiat_transactions`: Lists all user's fiat transactions from the Bitpanda API. Newest fiat transactions come first. Response is cursor paginated.
+    -   Parameters:
+        -   `type` (string, optional): buy, sell, deposit, withdrawal, transfer, refund.
+        -   `status` (string, optional): pending, processing, finished, canceled.
+        -   `cursor` (string, optional): Id of the last known fiat transaction by the client. Only fiat transactions after this id are returned. Empty or missing cursor parameter will return fiat transactions from the start.
+        -   `page_size` (integer, optional): Size of a page for the paginated response.
+
+-   `list_crypto_wallets`: Lists all user's crypto wallets from the Bitpanda API.
+    -   Parameters: None.
+
+-   `list_crypto_transactions`: Lists all user's crypto transactions from the Bitpanda API. Newest crypto transactions come first. Response is cursor paginated.
+    -   Parameters:
+        -   `type` (string, optional): One of `buy`, `sell`, `deposit`, `withdrawal`, `transfer`, `refund` or `ico`.
+        -   `status` (string, optional): One of `pending`, `processing`, `unconfirmed_transaction_out`, `open_invitation`, `finished` or `canceled`.
+        -   `cursor` (string, optional): Id of the last known crypto transaction by the client. Only crypto transactions after this id are returned. Empty or missing cursor parameter will return crypto transactions from the start.
+        -   `page_size` (integer, optional): Size of a page for the paginated response.
+
+-   `list_commodity_transactions`: Lists all user's commodity transactions from the Bitpanda API. Newest commodity transactions come first. Response is cursor paginated.
+    -   Parameters:
+        -   `cursor` (string, optional): Id of the last known commodity transaction by the client. Only commodity transactions after this id are returned. Empty or missing cursor parameter will return commodity transactions from the start.
+        -   `page_size` (integer, optional): Size of a page for the paginated response.
+
 ## Extending
 
 To add more Bitpanda API endpoints as tools, implement a new tool file in `src/tools/` and register it in `src/tools/index.ts`.
