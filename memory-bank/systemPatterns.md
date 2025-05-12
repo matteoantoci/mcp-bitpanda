@@ -20,5 +20,5 @@ The project is structured as an MCP server, exposing interactions with the Bitpa
 - **MCP Server (`src/index.ts`):** The main component that hosts and exposes the Bitpanda tools.
 - **Tool Modules (`src/tools/*.ts`):** Individual modules for each Bitpanda API resource, containing the API interaction logic and tool definitions.
 - **Tool Registration (`src/tools/index.ts`):** A central module responsible for importing and registering all individual tools with the MCP server.
-- **Configuration Module (`src/config.ts`):** Provides API base URL and API key to the tool handlers.
+- **Configuration Module (`src/config.ts`):** Provides API base URLs (`v1` and `v3`) and API key to the tool handlers.
 - **Axios:** Used by tool handlers to make HTTP requests to the Bitpanda API.

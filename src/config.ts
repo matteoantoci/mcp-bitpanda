@@ -3,6 +3,8 @@ dotenv.config(); // Load environment variables from .env file
 
 export const BITPANDA_API_BASE_URL = 'https://api.bitpanda.com/v1';
 
+export const BITPANDA_API_V3_BASE_URL = 'https://api.bitpanda.com/v3';
+
 export const getBitpandaApiKey = (): string => {
   const apiKey = process.env.BITPANDA_API_KEY;
   if (!apiKey) {

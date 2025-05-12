@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import axios from 'axios';
-import { BITPANDA_API_BASE_URL } from '../config.js'; // Use .js extension for local import
+import { BITPANDA_API_V3_BASE_URL } from '../config.js'; // Use .js extension for local import
 import { findAssetBySymbol } from './utils/assetUtils.js'; // Import the shared utility
 
 // Define the input schema shape for the get_ohlc tool
@@ -36,11 +36,11 @@ const ohlcHandler = async (input: Input): Promise<Output> => {
   try {
     // First, get the asset ID using the shared utility function
     const foundAsset = await findAssetBySymbol(input.symbol);
-    const assetId = foundAsset.id;
+    const assetPid = foundAsset.attributes.pid;
 
-    // Then, fetch the OHLC data using the asset ID
+    // Then, fetch the OHLC data using the asset PID
     const ohlcResponse = await axios.get(
-      `${BITPANDA_API_BASE_URL}/ohlc/${assetId}/${input.fiatCurrency}/${input.timeframe}`
+      `${BITPANDA_API_V3_BASE_URL}/ohlc/${assetPid}/${input.fiatCurrency}/${input.timeframe}`
     );
     const ohlcData = ohlcResponse.data;
 

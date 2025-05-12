@@ -17,6 +17,8 @@ This document tracks what is currently working in the mcp-bitpanda project, what
     - `list_crypto_transactions`
     - `list_commodity_transactions`
 - The core Memory Bank files (`projectbrief.md`, `productContext.md`, `systemPatterns.md`, `techContext.md`, `activeContext.md`) have been created.
+- Added `BITPANDA_API_V3_BASE_URL` in `src/config.ts` and updated `src/tools/ohlc.ts` & `src/tools/utils/assetUtils.ts` to use the v3 base URL.
+- Corrected `src/tools/ohlc.ts` to use asset `pid` instead of `id` for the OHLC endpoint and updated `BitpandaAsset` type in `src/tools/utils/assetUtils.ts` to include `pid`.
 
 ## What's Left to Build:
 - Implement additional tools for other Bitpanda API endpoints (e.g., fetching specific items, placing orders, etc.).

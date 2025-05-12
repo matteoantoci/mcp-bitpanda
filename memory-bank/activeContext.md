@@ -21,6 +21,8 @@ Implementing the initial set of MCP tools for interacting with the Bitpanda API,
     - `list_crypto_transactions` (`cryptoTransactions.ts`)
     - `list_commodity_transactions` (`commodity.ts`)
 - Updated `src/tools/index.ts` to import and register the implemented tools.
+- Added `BITPANDA_API_V3_BASE_URL` in `src/config.ts`; updated `src/tools/ohlc.ts` and `src/tools/utils/assetUtils.ts` to use the v3 base URL for those endpoints.
+- Corrected `src/tools/ohlc.ts` to use asset `pid` instead of `id` for the OHLC endpoint and updated `BitpandaAsset` type in `src/tools/utils/assetUtils.ts` to include `pid`.
 
 ## Next Steps:
 - Create the remaining core Memory Bank files (`progress.md`).

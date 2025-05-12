@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BITPANDA_API_BASE_URL } from '../../config.js'; // Adjust path for utility file
+import { BITPANDA_API_V3_BASE_URL } from '../../config.js'; // Adjust path for utility file
 
 // Define a type for the asset structure based on the currencies endpoint response
 type BitpandaAsset = {
@@ -7,6 +7,7 @@ type BitpandaAsset = {
   id: string;
   attributes: {
     symbol: string;
+    pid: string; // Explicitly add pid
     // Add other relevant attributes if needed
     [key: string]: any;
   };
@@ -20,7 +21,7 @@ type BitpandaAsset = {
  */
 export const findAssetBySymbol = async (symbol: string): Promise<BitpandaAsset> => {
   try {
-    const currenciesResponse = await axios.get(`${BITPANDA_API_BASE_URL}/currencies`);
+    const currenciesResponse = await axios.get(`${BITPANDA_API_V3_BASE_URL}/currencies`);
     const currenciesData = currenciesResponse.data.data.attributes;
 
     const assetTypes = ['commodities', 'cryptocoins', 'etfs', 'etcs', 'fiat_earns'];
