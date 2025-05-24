@@ -1,10 +1,13 @@
 # MCP Bitpanda Server
 
+[![smithery badge](https://smithery.ai/badge/@matteoantoci/mcp-bitpanda)](https://smithery.ai/server/@matteoantoci/mcp-bitpanda)
+
 A Model Context Protocol (MCP) server that exposes tools for interacting with the Bitpanda API. This server allows programmatic access to Bitpanda features like trades, wallets, and transactions via the MCP protocol.
 
 <a href="https://glama.ai/mcp/servers/@matteoantoci/mcp-bitpanda">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@matteoantoci/mcp-bitpanda/badge" alt="Bitpanda Server MCP server" />
 </a>
+
 
 ## Prerequisites
 
@@ -27,6 +30,14 @@ A Model Context Protocol (MCP) server that exposes tools for interacting with th
    npm run build
    ```
    This will create a `build` directory with the compiled JavaScript code.
+
+### Installing via Smithery
+
+To install MCP Bitpanda Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@matteoantoci/mcp-bitpanda):
+
+```bash
+npx -y @smithery/cli install @matteoantoci/mcp-bitpanda --client claude
+```
 
 ## Running the Server
 
